@@ -1,6 +1,6 @@
 {
 	"name": "open-link-text-mobile-bug",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Open link text mobile bug",
 	"main": "main.js",
 	"scripts": {
