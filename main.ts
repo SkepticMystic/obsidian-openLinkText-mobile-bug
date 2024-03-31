@@ -15,7 +15,9 @@ export default class ExamplePlugin extends Plugin {
 		});
 	}
 
-	onunload() {}
+	onunload() {
+		console.log("unloading openLinkText-mobile-bug plugin");
+	}
 
 	async activateView(view_id: string, options?: { side?: "left" | "right" }) {
 		const { workspace } = this.app;
