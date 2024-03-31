@@ -68,22 +68,36 @@ export class ExampleView extends ItemView {
 
 		const path = "example.md";
 
+		const clickHandler = (e: MouseEvent) => {
+			this.app.workspace.openLinkText(
+				path,
+				this.app.workspace.getActiveFile()?.path ?? "",
+				Keymap.isModEvent(e)
+			);
+		};
+
+		container.createEl("a", {
+			href: path,
+			text: "anchor without clickHandler",
+			cls: "internal-link",
+			attr: { "data-href": path },
+		});
+
 		container
 			.createEl("a", {
 				href: path,
-				text: "example",
+				text: "anchor with clickHandler",
 				cls: "internal-link",
 				attr: { "data-href": path },
 			})
-			.onClickEvent((e) => {
-				console.log("click");
+			.onClickEvent(clickHandler);
 
-				this.app.workspace.openLinkText(
-					path,
-					this.app.workspace.getActiveFile()?.path ?? "",
-					Keymap.isModEvent(e)
-				);
-			});
+		container
+			.createEl("div", {
+				text: "div with clickHandler",
+				cls: "internal-link",
+			})
+			.onClickEvent(clickHandler);
 	}
 
 	async onClose() {}
